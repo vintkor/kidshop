@@ -1,0 +1,441 @@
+$white: #fff;
+$black: #000;
+$blue: #7FDBFD;
+$dark-blue: #9ECADE;
+$orange: #FC8A58;
+$green: #C4D208;
+
+$dark: #454D55;
+
+
+@import "_fonts";
+
+html {
+	font-size: 15px;
+}
+
+input {
+	outline: none;
+}
+
+::selection {
+  background: rgba($green, .3);
+}
+
+h1,h2,h3,h4,h5,h6 {
+	font-family: 'Marker';
+}
+
+p,li {
+	font-family: "Roboto Condensed";	
+}
+
+p,li {
+	font-weight: 100;
+	font-size: 16px;
+}
+
+.align-right {
+	text-align: right;
+}
+
+.align-center {
+	text-align: center;
+}
+
+.align-left {
+	text-align: left;
+}
+
+.flex {
+	display: flex;
+	align-items: center;
+}
+
+img.alignleft {
+	float: left;
+	margin: 20px;
+	margin-left: 0;
+}
+
+img.alignright {
+	float: right;
+	margin: 20px;
+	margin-right: 0;
+}
+
+img.aligncenter {
+    display: block;
+    margin: 20px auto;
+}
+
+img.alignnone {
+    display: block;
+    margin: 20px;
+}
+
+.relative {
+	position: relative;
+}
+
+body {
+	background: url("../img/pattern.gif");
+}
+
+.wrapper {
+	background: $white;
+	margin: 40px auto;
+	position: relative;
+	width: 100%;
+	max-width: 1200px;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+	border-radius: 20px;
+	overflow: hidden;
+}
+
+/* ============================== HEADER ============================= */
+
+header {
+	padding: 30px 20px;
+	.phone {
+		p {
+			line-height: 30px;
+			margin-bottom: 0;
+			font-size: 18px;
+			color: darken($dark-blue, 10%);
+			span {
+				color: darken($dark-blue, 10%);
+				font-weight: 500;
+			}
+		}
+		img {
+			width: 20px;
+			height: 20px;
+			border-radius: 6px;
+			position: relative;
+			margin-top: -2px;
+		}
+	}
+	input {
+		border: 1px solid rgba(darken($dark-blue, 10%), .1);
+		border-bottom: 4px solid rgba(darken($dark-blue, 10%), .1);
+		padding: 5px 20px;
+		color: darken($dark-blue, 10%);
+	}
+	input[type="text"] {
+		border-radius: 10px 0 0 10px;
+	}
+	input[type="submit"] {
+		border-radius: 0 10px 10px 0;
+		border-left: 0;
+		margin-left: -4px;
+		background: lighten($blue, 23%);
+		transition: .2s;
+		&:hover {
+			text-shadow: 1px 1px 1px rgba($black, .2);
+			color: $white;
+			background: $blue;
+			border-bottom-color: darken($blue, 10%);
+		}
+	}
+	.cart {
+		padding: 8px 10px;
+		text-align: center;
+		margin-right: 21px;
+		position: relative;
+		img {
+			width: 50px;
+			height: 50px;
+		}
+		p {
+			margin-bottom: 0;
+			width: 100%;
+			margin-top: 4px;
+			position: relative;
+			color: darken($dark-blue, 15%);
+			.woocommerce-Price-amount {
+				font-weight: 400;
+			}
+		}
+		a {
+			background: rgba($green, .1);
+			border-radius: 10px;
+			border-bottom: 4px solid rgba($green, .2);
+			display: block;
+			position: absolute;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			right: 0;
+			transition: .2s;
+			&:hover {
+				background: rgba($orange, .1);
+				border-color: rgba($orange, .2);
+			}
+		}
+	}
+}
+
+/* ============================== TOP-NAV ================================= */
+
+.top-nav {
+	padding: 0 30px 30px 30px;
+	position: relative;
+	display: block;
+	z-index: 10;
+	ul {
+		padding-left: 0;
+		display: flex;
+		li {
+			width: 100%;
+			text-align: center;
+			display: inline-block;
+			text-decoration: none;
+			margin: 0;
+			background: lighten($blue, 23%);
+			border-bottom: 4px solid rgba(darken($dark-blue, 10%), .1);
+			&:first-child {
+				border-radius: 15px 0 0 15px;
+				overflow: hidden;
+			}
+			&:last-child {
+				border-radius: 0 15px 15px 0;
+				overflow: hidden;
+			}
+			&:hover {
+				border-color: darken($blue, 10%);
+			}
+			a {
+				padding: 30px 30px 26px 30px;
+				display: block;
+				font-family: 'Marker';
+				font-size: 18px;
+				color: darken($dark-blue, 10%);
+				&:hover {
+					background: $blue;
+					color: $white;
+					text-decoration: none;
+					text-shadow: 1px 1px 1px rgba($black, .2);
+				}
+			}
+		}
+		.current-menu-item {
+			border-color: darken($blue, 10%);
+			a {
+				background: $blue;
+				color: $white;
+				text-shadow: 1px 1px 1px rgba($black, .2);
+			}
+		}
+	}
+}
+
+/* ============================== SLIDER ============================= */
+
+.slider {
+	margin-top: -10px;
+	z-index: 0;
+	position: relative;
+}
+
+.owl-nav {
+    position: absolute;
+    top: 50%;
+    margin-top: -45px;
+    left: 0;
+    right: 0;
+}
+
+.owl-prev {
+    position: absolute;
+    left: 15px;
+    background: rgba($blue, .5);
+    border: 7px solid rgba($white, .5);
+    padding: 0px 8px 4px;
+    color: $white;;
+    font-size: 32px;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    text-shadow: 1px 1px 1px rgba($black, .2);
+}
+
+.owl-next {
+    position: absolute;
+    right: 15px;
+    background: rgba($blue, .5);
+    border: 7px solid rgba($white, .5);
+    padding: 0px 8px 4px;
+    color: $white;;
+    font-size: 32px;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    text-shadow: 1px 1px 1px rgba($black, .2);
+}
+
+.owl-prev,
+.owl-next {
+	transition: .2s;
+	&:hover {
+		background: $green;
+	}
+}
+
+.owl {
+	position: relative;
+	.wrapper_slide {
+		position: absolute;
+		left: 30px;
+		bottom: 30px;
+		width: 550px;
+		height: 150px;
+		text-align: center;
+		background: rgba($white, .98);
+		border-radius: 15px;
+		padding: 10px 0;
+		box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+		border-bottom: 4px solid darken($white, 5%);
+		h3 {
+			color: darken($dark-blue, 10%);
+			font-family: 'Marker';
+			text-shadow: none;
+			font-size: 28px;
+			margin-bottom: 20px;
+		}
+		a {
+			display: inline-block;
+			padding: 11px 18px 8px;
+			background: $orange;
+			border-radius: 5px;
+			box-shadow: 0px 5px 0px 0px darken($orange, 5%);
+			color: $white;
+			font-size: 16px;
+			font-family: 'Marker';
+			transform: translatey(0px);
+			transition: .2s;
+			text-shadow: 1px 1px 3px rgba($black, .2);
+			&:hover {
+				text-decoration: none;
+				transform: translatey(4px);
+				box-shadow: 0px 0 0px 0px darken($orange, 5%);
+			}
+		}
+	}
+}
+
+
+
+/* ============================== MAIN CATEGORY ============================= */
+
+.main_category {
+	text-align: center;
+	margin-bottom: 30px;
+	margin-top: 30px;
+	h2 {
+		font-family: 'Marker';
+	}
+	img {
+		width: 100%;
+		height: auto;
+	}
+	.cat_wrapper {
+		border: 3px solid transparent;
+		background: transparent;
+		border-radius: 15px;
+		transition: .2s;
+		a {
+			position: absolute;
+			display: block;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			right: 0;
+		}	
+	}
+	.women {
+		h2 {
+			color: $orange;
+			text-shadow: 1px 1px 1px rgba($black, .1);
+		}
+		&:hover {
+			border-color: $orange;
+			background: rgba( $orange, .1);
+		}
+	}
+	.man {
+		h2 {
+			color: $blue;
+			text-shadow: 1px 1px 1px rgba($black, .1);
+		}
+		&:hover {
+			border-color: $blue;
+			background: rgba( $blue, .1);
+		}
+	}
+	.kids {
+		h2 {
+			color: $green;
+			text-shadow: 1px 1px 1px rgba($black, .1);
+		}
+		&:hover {
+			border-color: $green;
+			background: rgba( $green, .1);
+		}
+	}
+}
+
+/* ============================== COPY ============================= */
+
+.copy {
+	border-top: 1px solid rgba($dark, .08);
+	p,h2 {
+		color: rgba($dark, .7);
+	}
+}
+
+/* ============================== COPY ============================= */
+
+.copy_inner {
+	p,h2 {
+		color: rgba($dark, .7);
+	}
+}
+
+/* ============================== FOOTER ============================= */
+
+footer {
+	background: rgba($dark, .04);
+	border-top: 1px solid rgba($dark, .06);
+	padding: 10px 20px;
+	img {
+		width: 22px;
+		height: 22px;
+	}
+	p {
+		color: rgba($dark, .7);
+		margin-bottom: 0;
+	}
+	a {
+		color: darken($blue, 30%);
+	}
+}
+
+
+/* ============================================================================== */
+/* ================================*			 *=============================== */
+/* ================================* WOOCOMMERCE *=============================== */ 
+/* ================================*			 *=============================== */
+/* ============================================================================== */
+
+
+.woocommerce div.product div.images img,
+.woocommerce ul.products li.product a img {
+    display: block;
+    position: relative;
+    margin: 0 auto;
+    box-shadow: none;
+    width: auto;
+}
+
+// @import "_max-1200";
+// @import "_max-992";
+// @import "_max-768";
