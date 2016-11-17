@@ -7,6 +7,10 @@ $green: #C4D208;
 
 $dark: #454D55;
 
+@mixin box-shadow {
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
 
 @import "_fonts";
 
@@ -83,12 +87,12 @@ body {
 }
 
 .wrapper {
+	@include box-shadow;
 	background: $white;
-	margin: 40px auto;
+	margin: 0 auto 40px;
 	position: relative;
 	width: 100%;
 	max-width: 1200px;
-	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 	border-radius: 20px;
 	overflow: hidden;
 }
@@ -158,6 +162,7 @@ header {
 			}
 		}
 		a {
+			@include box-shadow;
 			background: rgba($green, .1);
 			border-radius: 10px;
 			border-bottom: 4px solid rgba($green, .2);
@@ -176,10 +181,37 @@ header {
 	}
 }
 
+/* ============================== SUPER-TOP-NAV ================================= */
+
+.super-top-nav {
+	ul {
+		margin: 10px auto;
+		text-align: right;
+		li {
+			list-style: none;
+			display: inline-block;
+			margin-left: 20px;
+			a {
+				color: darken($dark-blue, 20%);
+			}
+		}
+	}
+	.auth {
+		ul {
+			margin-left: -50px;
+			text-align: left;
+			li {
+				margin-left: 0;
+				margin-right: 20px;
+			}
+		}
+	}
+}
+
 /* ============================== TOP-NAV ================================= */
 
 .top-nav {
-	padding: 0 30px 30px 30px;
+	padding: 0 30px 0px 30px;
 	position: relative;
 	display: block;
 	z-index: 10;
@@ -233,7 +265,7 @@ header {
 /* ============================== SLIDER ============================= */
 
 .slider {
-	margin-top: -10px;
+	margin-top: 20px;
 	z-index: 0;
 	position: relative;
 }
@@ -283,6 +315,7 @@ header {
 .owl {
 	position: relative;
 	.wrapper_slide {
+		@include box-shadow;
 		position: absolute;
 		left: 30px;
 		bottom: 30px;
@@ -292,7 +325,6 @@ header {
 		background: rgba($white, .98);
 		border-radius: 15px;
 		padding: 10px 0;
-		box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 		border-bottom: 4px solid darken($white, 5%);
 		h3 {
 			color: darken($dark-blue, 10%);
@@ -319,6 +351,97 @@ header {
 				box-shadow: 0px 0 0px 0px darken($orange, 5%);
 			}
 		}
+	}
+}
+
+
+/* ===============================  Breadcrumbds  =============================== */
+
+.bread {
+	margin-top: 10px;
+	padding: 10px 0;
+	color: $black;
+	hr {
+		margin-bottom: 0;	
+	}
+	span {
+		position: relative;
+		margin-right: 2px;
+		a {
+			span {
+				background: lighten($blue, 23%);
+				padding-top: 7px;
+				padding-bottom: 7px;
+				padding-left: 20px;
+				padding-right: 10px;
+				transition: .2s;
+				color: darken($dark-blue, 20%);
+				border-bottom: 1px solid rgba($dark-blue, .3);
+				&:after {
+					width: 0;
+					height: 0;
+					border-style: solid;
+					border-width: 15px 0 15px 15px;
+					border-color: transparent transparent transparent lighten($blue, 23%);
+					content: "";
+					position: absolute;
+					top: 0;
+					right: -15px;
+					z-index: 10;
+					transition: .2s;
+				}
+				&:before {
+					width: 0;
+					height: 0;
+					border-style: solid;
+					border-width: 15px 0 15px 15px;
+					border-color: transparent transparent transparent $white;
+					content: "";
+					position: absolute;
+					top: 0;
+					right: -17px;
+					z-index: 10;
+					transition: .2s;
+				}
+			}
+			&:hover {
+				text-decoration: none;
+				span {
+					text-shadow: 1px 1px 3px rgba($black, .2);
+					background: $blue;
+					color: $white;
+					border-bottom: 1px solid darken($blue, 15%);					
+					&:after {
+						border-color: transparent transparent transparent $blue;
+					}
+				}
+			}
+		}
+	}
+	span:last-child span {
+		padding-top: 7px;
+		padding-bottom: 7px;
+		padding-left: 20px;
+		padding-right: 10px;
+		background: rgba($green, .1);
+		color: darken($green, 20%);
+		border-bottom: 1px solid rgba($green, .3);
+		&:after {
+			width: 0;
+			height: 0;
+			border-style: solid;
+			border-width: 15px 0 15px 15px;
+			border-color: transparent transparent transparent rgba($green, .1);
+			content: "";
+			position: absolute;
+			top: 0;
+			right: -15px;
+			z-index: 10;
+			transition: .2s;
+		}
+	}
+	span:first-child span {
+		border-radius: 8px 0 0 8px;
 	}
 }
 
@@ -392,11 +515,67 @@ header {
 	}
 }
 
-/* ============================== COPY ============================= */
+/* ============================== copy-inner ============================= */
 
-.copy_inner {
+.copy-inner {
+	padding-top: 20px;
 	p,h2 {
 		color: rgba($dark, .7);
+	}
+	h1,h2,h3,h4,h5,h6 {
+		color: darken($dark-blue, 10%);
+	}
+
+	.img-thumbnail {
+		position: relative;
+		margin: 0 auto;
+		display: block;
+		margin-bottom: 20px;
+	}
+
+	blockquote {
+		font-style: italic;
+		border-left: 4px solid rgba($green, .7);
+		background: rgba($green, .1);
+		p {
+			color: darken($green, 20%);			
+		}
+	}
+}
+
+/* ============================== PAGINATION ============================= */
+
+.navigate {
+	text-align: center;
+	margin-bottom: 20px;
+	.pages {
+		color: darken($dark-blue, 30%);
+		border: none;
+		background: rgba($blue, .2);
+		padding: 5px 10px;
+		border-bottom: 3px solid transparent;
+	}
+	.current {
+		border-color: transparent !important;
+		border: none;
+		font-weight: 300 !important;
+		border-bottom: 3px solid $green !important;
+		background: rgba($green, .4);
+		color: darken($green, 20%);
+		padding: 5px 10px;
+	}
+	.page,
+	.nextpostslink,
+	.previouspostslink {
+		color: darken($dark-blue, 30%);
+		border: none;
+		background: $blue;
+		padding: 5px 10px !important;
+		border-bottom: 3px solid darken($dark-blue, 10%);
+		&:hover {
+			background: rgba($green, .4);
+			border-color: $green;
+		}
 	}
 }
 
@@ -419,6 +598,24 @@ footer {
 	}
 }
 
+/* ================================* NEWS *=============================== */ 
+
+.news {
+	a {
+		&:hover {
+				text-decoration: none;
+			h2 {
+			}
+		}
+		h2 {
+			&:hover {
+				text-decoration: none;
+				color: $green;
+			}			
+		}
+	}
+}
+
 
 /* ============================================================================== */
 /* ================================*			 *=============================== */
@@ -434,6 +631,303 @@ footer {
     margin: 0 auto;
     box-shadow: none;
     width: auto;
+}
+
+.woocommerce div.product div.images img, .woocommerce ul.products li.product a img {
+    max-height: 300px;
+    width: auto !important;
+}
+
+.woocommerce #respond input#submit,
+.woocommerce a.button,
+.woocommerce button.button,
+.woocommerce input.button,
+.single_add_to_cart_button {
+	background: rgba($green, .25) !important;
+	box-shadow: 0px 4px 0px 0px rgba($green, .5);
+	color: darken($green, 18%) !important;
+	transition: .2s;
+	font-weight: 300;
+	&:hover {
+		color: darken($green, 18%);
+		background: rgba($green, .25);
+		transform: translatey(4px);
+		box-shadow: 0px 0 0px 0px rgba($green, .5);
+	}
+}
+
+.woocommerce ul.products li.product h3 {
+	color: darken($dark-blue, 10%);
+	font-family: 'Roboto Condensed';
+	text-align: center;
+}
+
+.woocommerce ul.products li.product .price {
+	color: $orange;
+	font-size: 30px;
+	text-align: center;
+	font-weight: 300;
+	margin-bottom: 0;
+}
+
+.woocommerce-Price-currencySymbol {
+	font-size: 18px;
+}
+
+.woocommerce .quantity .qty {
+	border: 1px solid rgba(darken($dark-blue, 10%), .3);
+	border-bottom: 4px solid rgba(darken($dark-blue, 10%), .3);
+	padding: 5px;
+	color: darken($dark-blue, 20%);
+	min-width: 60px;
+	border-radius: 3px;
+}
+
+.woocommerce-message {
+    border-top-color: $green;
+    top: 10px;
+}
+
+.woocommerce-info,
+.woocommerce-message {
+    padding: 1em 2em 1em 3.5em!important;
+    margin: 0 0 2em!important;
+    position: relative;
+    background-color: rgba($orange, .1);
+    color: darken($orange, 35%);
+    border-top: 3px solid rgba($orange, .3);
+    list-style: none!important;
+    width: auto;
+    word-wrap: break-word;
+}
+
+.posted_in {
+	display: none;
+}
+
+.woocommerce-message:before {
+    color: $green;
+}
+
+.woocommerce div.product .product_title {
+	font-family: 'Roboto Condensed';
+	color: darken($dark-blue, 20%);
+}
+
+.woocommerce div.product p.price, .woocommerce div.product span.price {
+    color: $orange;
+	font-size: 30px;
+	font-weight: 300;
+}
+
+.woocommerce div.product .woocommerce-tabs ul.tabs:before {
+    border-bottom: 1px solid $dark-blue;
+}
+
+.woocommerce div.product .woocommerce-tabs ul.tabs li {
+    border: 1px solid $dark-blue;
+    background: lighten($blue, 23%);
+    color: darken($dark-blue, 10%);
+}
+
+.woocommerce div.product .woocommerce-tabs ul.tabs li a {
+    color: darken($dark-blue, 10%);
+    &:hover {
+    	color: darken($dark-blue, 10%);
+    }
+}
+
+tr.alt {
+	background: rgba($blue, .1);
+}
+
+.woocommerce p.stars a {
+    color: $orange;
+}
+
+.page-id-6,
+.comment-form {
+	input,
+	textarea {
+		// width: 100%;
+		padding: 5px 20px;
+		border: 1px solid rgba(darken($dark-blue, 10%), .3);
+		border-bottom: 4px solid rgba(darken($dark-blue, 10%), .3);
+		color: darken($dark-blue, 20%);
+		border-radius: 3px;
+	}
+	input[type="submit"] {
+		width: auto !important;
+	}
+	textarea {
+		min-height: 300px;
+	}
+}
+
+.woocommerce ul.products li.product .star-rating {
+    display: none;
+}
+
+.berocket_aapf_widget-wrapper {
+	input[type="text"] {
+		border: none !important;
+	}
+	label {
+		font-weight: 100;
+	}
+}
+
+.berocket_filter_slider.ui-widget-content .ui-slider-handle, .berocket_filter_price_slider.ui-widget-content .ui-slider-handle {
+    background: $blue;
+    border-radius: 50%;
+    &:active {
+    	transform: scale(1.5);    	
+    }
+    &:focus {
+    	outline: none;
+    }
+    &:hover {
+    	transition: .2s;
+    	transform: scale(1.5);
+    }
+}
+
+.berocket_filter_slider.ui-widget-content .ui-slider-range, .berocket_filter_price_slider.ui-widget-content .ui-slider-range {
+    background: $green;
+}
+
+.berocket_filter_slider.ui-widget-content, .berocket_filter_price_slider.ui-widget-content {
+    background: rgba($blue, .4);
+}
+
+.woocommerce table.shop_table {
+    border: 1px solid rgba(darken($dark-blue, 10%), .3);
+}
+
+.woocommerce table.shop_table td {
+    border-top: 1px solid rgba(darken($dark-blue, 10%), .3);
+}
+
+#add_payment_method table.cart td.actions .coupon .input-text,
+.woocommerce-cart table.cart td.actions .coupon .input-text,
+.woocommerce-checkout table.cart td.actions .coupon .input-text {
+	border: 1px solid rgba(darken($dark-blue, 10%), .3);
+	border-bottom: 4px solid rgba(darken($dark-blue, 10%), .3);
+	padding: 7px 20px;
+	color: darken($dark-blue, 20%);
+	min-width: 140px;
+    border-radius: 3px;
+    text-align: center;
+}
+
+#add_payment_method #payment, .woocommerce-cart #payment, .woocommerce-checkout #payment {
+    background: rgba($orange, .1);
+    border-bottom: 4px solid rgba($orange, .3);
+    margin-bottom: 20px;
+}
+
+.select2-container .select2-choice {
+    border: 1px solid rgba(darken($dark-blue, 10%), .3);
+    border-bottom: 4px solid rgba(darken($dark-blue, 10%), .3);
+    color: darken($dark-blue, 20%);
+    font-weight: 100;
+}
+
+.woocommerce-error {
+    border-top-color: $orange;
+    background: rgba($orange, .5);
+}
+
+.woocommerce a.remove {
+    color: $orange !important;
+    &:hover {
+    	color: $white !important;
+    	background: $orange;
+    }
+}
+
+.sidebar_woo {
+	background: rgba($green, .04);
+	border-radius: 10px;
+	border: 1px solid rgba($green, .15);
+	border-bottom: 4px solid rgba($green, .2);
+	// @include box-shadow;
+}
+
+.berocket_aapf_widget-wrapper input[type="text"] {
+	background: transparent;
+}
+
+.berocket_aapf_widget li.slider span.left input, .berocket_aapf_widget li.slider span.right input {
+    background: transparent;
+}
+
+ul.berocket_aapf_widget {
+    padding-left: 10px;
+}
+
+
+
+
+
+#wpadminbar {
+    color: $white !important;
+    background: #4DCDFC;
+    box-shadow: 0 0 10px rgba($dark, .3);
+    border-bottom: 1px solid darken(#78B5D9, 5%);
+    a {
+    	color: $white !important;
+    }
+}
+
+#wpadminbar .ab-top-menu>li.hover>.ab-item,
+#wpadminbar.nojq .quicklinks .ab-top-menu>li>.ab-item:focus,
+#wpadminbar:not(.mobile) .ab-top-menu>li:hover>.ab-item,
+#wpadminbar:not(.mobile) .ab-top-menu>li>.ab-item:focus {
+    background: $green;
+    color: $white !important;
+}
+
+#wpadminbar .quicklinks .ab-sub-wrapper .menupop.hover>a, #wpadminbar .quicklinks .menupop ul li a:focus, #wpadminbar .quicklinks .menupop ul li a:focus strong, #wpadminbar .quicklinks .menupop ul li a:hover, #wpadminbar .quicklinks .menupop ul li a:hover strong, #wpadminbar .quicklinks .menupop.hover ul li a:focus, #wpadminbar .quicklinks .menupop.hover ul li a:hover, #wpadminbar .quicklinks .menupop.hover ul li div[tabindex]:focus, #wpadminbar .quicklinks .menupop.hover ul li div[tabindex]:hover, #wpadminbar li #adminbarsearch.adminbar-focused:before, #wpadminbar li .ab-item:focus:before, #wpadminbar li a:focus .ab-icon:before, #wpadminbar li.hover .ab-icon:before, #wpadminbar li.hover .ab-item:before, #wpadminbar li:hover #adminbarsearch:before, #wpadminbar li:hover .ab-icon:before, #wpadminbar li:hover .ab-item:before, #wpadminbar.nojs .quicklinks .menupop:hover ul li a:focus, #wpadminbar.nojs .quicklinks .menupop:hover ul li a:hover {
+    color: $white;
+}
+
+#wpadminbar .menupop .ab-sub-wrapper, #wpadminbar .shortlink-input {
+    background: $green;
+}
+
+.wp-admin-bar-wp-logo {
+	display: none;
+}
+
+#wpadminbar #wp-admin-bar-wp-logo>.ab-item .ab-icon:before {
+    content: " ";
+    background: url('/wp-content/themes/baby/app/img/maps.svg') no-repeat;
+    position: absolute;
+    width: 20px;
+    height: 25px;
+    top: 3px;
+    left: 0;
+    display: block;
+}
+
+#add_payment_method #payment div.payment_box, .woocommerce-cart #payment div.payment_box, .woocommerce-checkout #payment div.payment_box {
+    background-color: rgba($orange, .5);
+    color: darken($orange, 30%);
+}
+
+#add_payment_method #payment div.payment_box:before, .woocommerce-cart #payment div.payment_box:before, .woocommerce-checkout #payment div.payment_box:before {
+    border: 1em solid rgba($orange, .5);
+    border-right-color: transparent;
+    border-left-color: transparent;
+    border-top-color: transparent;
+    top: -.89em;
+}
+
+.hover {
+	.wp-admin-bar-wp-logo-external {
+		display: none !important;
+	}
 }
 
 // @import "_max-1200";
